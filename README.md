@@ -16,6 +16,9 @@ cd IcedTea-Docker
 # Copy your jnlp file to ./files
 cp your_app.jnlp ./files
 
+# Allow local connections to X Server (important!)
+xhost +local:
+
 # Start Docker
 docker compose up -d
 docker exec -it icedtea bash
@@ -23,3 +26,9 @@ docker exec -it icedtea bash
 # The following operations are performed within the container
 javaws ~/files/(your_file).jnlp
 ```
+
+### Notes
+
+- If you're using Wayland, the application will work through XWayland
+- The `xhost +local:` command is required to allow the container to connect to your X Server
+- For security reasons, you might want to restrict X Server access after you're done: `xhost -local:`

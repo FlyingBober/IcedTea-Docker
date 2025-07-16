@@ -16,6 +16,9 @@ cd IcedTea-Docker
 # Copy your jnlp file to ./files
 cp your_app.jnlp ./files
 
+# Forward windows if you have Wayland
+xhost +local:
+
 # Start Docker
 docker compose up -d
 docker exec -it icedtea bash
